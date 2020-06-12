@@ -1,0 +1,6 @@
+/* pages/main/main.wxss */
+@import '../coupitem/coupitem.wxss';
+
+.banner{
+  height: 400rpx;
+}

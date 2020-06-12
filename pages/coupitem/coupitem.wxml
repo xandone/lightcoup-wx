@@ -1,0 +1,13 @@
+<template name="coup-item">
+	<view class="item-root">
+		<view>
+			<image class="item-cover" src="{{item.cover}}"></image>
+		</view>
+		<view class="item-content">
+			<text class="item-title">{{item.title}}</text>
+			<text class="item-date">有效期{{item.expiredDate}}</text>
+			<text class="item-distance">距离：{{item.distance}}</text>
+			<text class="item-price">优惠券：{{item.price}}</text>
+		</view>
+	</view>
+</template>

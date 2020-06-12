@@ -1,0 +1,14 @@
+<!--pages/main/main.wxml-->
+<import src="../coupitem/coupitem.wxml" />
+<view>
+	<view class="banner">
+		<swiper indicator-dots="true">
+			<swiper-item wx:for="{{banner}}">
+				<image src="{{item}}"></image>
+			</swiper-item>
+		</swiper>
+	</view>
+	<view>
+		<template is="coup-item" data="{{item}}" wx:for="{{coupList}}" wx:key="{{item.id}}"></template>
+	</view>
+</view>
