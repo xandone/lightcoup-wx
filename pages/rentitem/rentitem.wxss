@@ -1,0 +1,55 @@
+.item-root {
+  display: flex;
+  align-items: flex-start;
+  padding: 10rpx;
+  border-bottom: #ccc 0.5rpx solid;
+}
+
+.item-cover {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 4%;
+}
+
+.item-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 10rpx;
+}
+
+.item-title {
+  color: #333;
+  font-size: 28rpx;
+  margin-right: 50rpx;
+}
+.item-discrip {
+  color: #555;
+  font-size: 24rpx;
+  margin-right: 100rpx;
+}
+
+.item-publish_date {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.item-destination {
+  color: #555;
+  font-size: 24rpx;
+}
+
+.item-location-view {
+  color: #ffd04b;
+  font-size: 26rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.item-price{
+  color: red;
+}

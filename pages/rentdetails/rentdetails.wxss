@@ -1,0 +1,25 @@
+/* pages/rentdetails/rentdetails.wxss */
+.details-root {
+  padding: 10rpx;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.date {
+  color: #555;
+  text-align: end;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.discrip {
+  color: #333;
+  font-size: 36rpx;
+}

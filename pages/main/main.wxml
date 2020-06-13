@@ -1,14 +1,14 @@
 <!--pages/main/main.wxml-->
-<import src="../coupitem/coupitem.wxml" />
+<import src="../rentitem/rentitem.wxml" />
 <view>
 	<view class="banner">
-		<swiper indicator-dots="true">
+		<swiper class="banner-swiper" indicator-dots="true">
 			<swiper-item wx:for="{{banner}}">
-				<image src="{{item}}"></image>
+				<image class="banner-img" src="{{item}}"></image>
 			</swiper-item>
 		</swiper>
 	</view>
 	<view>
-		<template is="coup-item" data="{{item}}" wx:for="{{coupList}}" wx:key="{{item.id}}"></template>
+		<template is="rent-item" data="{{item}}" wx:for="{{rentList}}" wx:key="{{item.id}}"></template>
 	</view>
 </view>

@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/main/main",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/rentdetails/rentdetails"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,8 +11,8 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#cdcdcd",
-    "selectedColor": "#f4ea2a",
+    "color": "#333",
+    "selectedColor": "#ffd04b",
     "borderStyle": "white",
     "backgroundColor": "#f7f7f7",
     "list": [{

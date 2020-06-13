@@ -1,6 +1,17 @@
 /* pages/main/main.wxss */
-@import '../coupitem/coupitem.wxss';
+@import '../rentitem/rentitem.wxss';
 
 .banner{
-  height: 400rpx;
+  width: 100%;
+  height: 360rpx;
+}
+
+.banner-swiper{
+  width: 100%;
+  height: 100%;
+}
+
+.banner-img{
+  width: 100%;
+  height: 100%;
 }

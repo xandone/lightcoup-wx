@@ -1,0 +1,12 @@
+<!--pages/rentdetails/rentdetails.wxml-->
+<view class="details-root">
+	<view class="title">
+		<text >{{rentInfo.title}}</text>
+	</view>
+  <view class="date">
+   <text>{{rentInfo.publish_data}}</text>
+  </view>
+	<view class="discrip">
+  <text>{{rentInfo.discrip}}</text>
+  </view>
+</view>
