@@ -1,1 +1,1 @@
-# lightcoup-wx
+# sharedrent-wx
