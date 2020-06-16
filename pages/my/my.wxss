@@ -1,1 +1,75 @@
 /* pages/my/my.wxss */
+
+.root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo {
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffd04b;
+  padding-top: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.login-view {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.default-ic {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.user-data-panel {
+  width: 90%;
+  height: 180rpx;
+  background-color: white;
+  border-radius: 4%;
+  position: absolute;
+  top: 310rpx;
+}
+
+.user-data-panel{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.my-publish{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.my-collect{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.user-handle{
+  width: 100%;
+  background-color: white;
+}
