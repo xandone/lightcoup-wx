@@ -12,6 +12,7 @@ Page({
     iosDialog2:false,
     title:"",
     descrip:"",
+    value:[]
   },
 
   /**
@@ -107,14 +108,26 @@ close: function () {
     })
 },
 
+checkBoxChange:function(e){
+    this.setData({
+        value:e.detail.value
+    })
+},
+
 commit:function(e){
     let isTitleEmpty=app.util.isEmpty(this.data.title);
     let isDescripEmpty=app.util.isEmpty(this.data.descrip);
     if(isTitleEmpty){
+        console.log("请填写标题");
         return ;
     }
     if(isDescripEmpty){
+        console.log("请填写详情");
         return;
     }
+    if(this.data.value.length==0){
+        console.log("请勾选并同意相关条例");
+    }
+
 }
 })

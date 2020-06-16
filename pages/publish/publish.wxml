@@ -26,7 +26,6 @@
               <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
               <image class="pic-delete" src="/assets/delete.png" catchtap="deleteImage" id='{{index}}'> </image>
       </view>
-
      </block>
 
      <view wx:if="{{files.length <3}}" class="weui-uploader__input-box">
@@ -35,11 +34,14 @@
     </view>
 
    <label class="weui-agree" style="margin-top:20rpx">
-        <checkbox class="weui-agree__checkbox-check" />
-        <span class="weui-agree__checkbox"></span>
-        <span class="weui-agree__text">阅读并同意<navigator url="" class="weui-agree__link" catchtap="openIOS2">《相关条款》
-				</navigator>
-				</span>
+       <checkbox-group bindchange="checkBoxChange">
+         <checkbox class="weui-agree__checkbox-check" />
+          <span class="weui-agree__checkbox"></span>
+          <span class="weui-agree__text">阅读并同意
+          <navigator url="" class="weui-agree__link" catchtap="openIOS2">《相关条款》
+				  </navigator>
+				  </span>
+       </checkbox-group>
     </label>
      <view>
            <button class="weui-btn" style="margin-top:50rpx" type="primary" bindtap="commit">确定</button>

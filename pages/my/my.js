@@ -97,12 +97,21 @@ Page({
       })
     }
   },
+
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  go2publish:function(e){
+    if(!this.data.hasUserInfo && this.data.canIUse){
+      this.getUserInfo(e);
+      return;
+    }
+    wx.navigateTo({
+      url: '../publish/publish',
     })
   }
 })
