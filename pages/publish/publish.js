@@ -1,4 +1,7 @@
 // pages/publish/publish.js
+
+const app=getApp()
+
 Page({
 
   /**
@@ -105,5 +108,13 @@ close: function () {
 },
 
 commit:function(e){
+    let isTitleEmpty=app.util.isEmpty(this.data.title);
+    let isDescripEmpty=app.util.isEmpty(this.data.descrip);
+    if(isTitleEmpty){
+        return ;
+    }
+    if(isDescripEmpty){
+        return;
+    }
 }
 })

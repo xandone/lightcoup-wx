@@ -1,5 +1,11 @@
+const util = require('./utils/util.js')
+
 //app.js
 App({
+
+  util: util,
+
+
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

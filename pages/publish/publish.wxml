@@ -4,7 +4,7 @@
 	<view class="weui-cells weui-cells_after-title">
 		<view class="weui-cell weui-cell_active">
 			<view class="weui-cell__bd">
-				<input class="weui-input" placeholder="请输入标题" />
+				<input class="weui-input" placeholder="请输入标题" model:value="{{title}}" />
 			</view>
 		</view>
 	</view>
@@ -13,8 +13,8 @@
 	<view class="weui-cells weui-cells_after-title">
 		<view class="weui-cell weui-cell_active">
 			<view class="weui-cell__bd">
-				<textarea class="weui-textarea" placeholder="请输入详细内容" style="height: 5em" />
-				<view class="weui-textarea-counter">0/500</view>
+				<textarea class="weui-textarea" placeholder="请输入详细内容" style="height: 5em" model:value="{{descrip}}" />
+				<view class="weui-textarea-counter">{{descrip.length}}/500</view>
       </view>
     </view>
   </view>
