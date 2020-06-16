@@ -22,12 +22,25 @@
 .item-title {
   color: #333;
   font-size: 28rpx;
-  margin-right: 50rpx;
+  margin-right: 100rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
+
 .item-discrip {
   color: #555;
   font-size: 24rpx;
   margin-right: 100rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .item-publish_date {
@@ -50,6 +63,7 @@
   flex-direction: column;
   align-items: flex-end;
 }
-.item-price{
+
+.item-price {
   color: red;
 }

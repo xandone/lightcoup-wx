@@ -2,7 +2,8 @@
   "pages": [
     "pages/main/main",
     "pages/my/my",
-    "pages/rentdetails/rentdetails"
+    "pages/rentdetails/rentdetails",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

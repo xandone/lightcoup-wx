@@ -1,6 +1,6 @@
 /* pages/rentdetails/rentdetails.wxss */
 .details-root {
-  padding: 10rpx;
+  padding: 15rpx;
 }
 
 .title {
@@ -14,12 +14,17 @@
 .date {
   color: #555;
   text-align: end;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 10rpx;
   margin-bottom: 10rpx;
+  margin-right: 15rpx;
 }
 
 .discrip {
   color: #333;
   font-size: 36rpx;
+}
+
+.rent-pic{
+  width: 100%;
 }
