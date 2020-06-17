@@ -36,7 +36,7 @@
 			<text class="weui-cell__ft" style="margin-right:15rpx"></text>
 		</view>
 
-		<navigator url="../publish/publish" class="weui-cell weui-cell_active weui-cell_access weui-cell_example user-handle">
+		<view bindtap="go2feedback"  class="weui-cell weui-cell_active weui-cell_access weui-cell_example user-handle">
 			<view class="weui-cell__hd">
 				<image src="/assets/feedback-ic.png" alt style="width: 25px; height: 25px; margin-right: 16px;margin-left:15rpx; display: block;"></image>
 			</view>
@@ -44,6 +44,6 @@
 				<view>反馈</view>
 			</view>
 			<text class="weui-cell__ft" style="margin-right:15rpx"></text>
-		</navigator>
+		</view>
 	</view>
 </view>

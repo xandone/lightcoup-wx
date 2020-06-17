@@ -118,16 +118,15 @@ commit:function(e){
     let isTitleEmpty=app.util.isEmpty(this.data.title);
     let isDescripEmpty=app.util.isEmpty(this.data.descrip);
     if(isTitleEmpty){
-        console.log("请填写标题");
+        app.util.showTipToast("请填写标题");
         return ;
     }
     if(isDescripEmpty){
-        console.log("请填写详情");
+        app.util.showTipToast("请填写详情");
         return;
     }
     if(this.data.value.length==0){
-        console.log("请勾选并同意相关条例");
+        app.util.showTipToast("请勾选并同意相关条例");
     }
-
 }
 })

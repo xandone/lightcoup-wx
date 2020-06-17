@@ -84,6 +84,7 @@ Page({
           hasUserInfo: true
         })
       }
+
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
@@ -105,9 +106,18 @@ Page({
       hasUserInfo: true
     })
   },
-  go2publish:function(e){
-    if(!this.data.hasUserInfo && this.data.canIUse){
-      this.getUserInfo(e);
+  go2publish: function (e) {
+    if (!this.data.hasUserInfo) {
+      app.util.showTipToast("请先登录");
+      return;
+    }
+    wx.navigateTo({
+      url: '../publish/publish',
+    })
+  },
+  go2feedback: function (e) {
+    if (!this.data.hasUserInfo) {
+      app.util.showTipToast("请先登录");
       return;
     }
     wx.navigateTo({

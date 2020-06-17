@@ -23,8 +23,17 @@ function isEmpty(obj){
   }
 }
 
+function showTipToast(tip){
+  wx.showToast({
+      title: tip,
+      icon: "none",
+      duration: 2000
+    })
+}
+
 module.exports = {
   formatTime: formatTime,
-  isEmpty
+  isEmpty,
+  showTipToast
 }
 
