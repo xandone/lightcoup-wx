@@ -78,6 +78,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
+    this.data.rentList=[];
     return app.rent.getRoomList()
       .then(rep =>
         this.setData({

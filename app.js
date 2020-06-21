@@ -1,11 +1,13 @@
 const util = require('./utils/util.js')
 const rent = require('/utils/rent.js')
+const qiniu = require('/utils/qiniu.js')
 
 //app.js
 App({
 
   util: util,
-  rent:rent,
+  rent: rent,
+  qiniu:qiniu,
 
 
   onLaunch: function () {
@@ -41,7 +43,13 @@ App({
           })
         }
       }
-    })
+    }),
+    qiniu.getQiniuToken()
+    .then(res=>
+      {
+        console.log(res.msg);
+        this.globalData.qiniutoken=res.msg;
+      })
   },
   globalData: {
     userInfo: null
