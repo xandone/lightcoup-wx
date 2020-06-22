@@ -2,13 +2,13 @@
 	<navigator url="../rentdetails/rentdetails?id={{item.id}}">
 		<view class="item-root">
 			<view>
-				<image class="item-cover" src="{{item.cover}}"></image>
+				<image class="item-cover" src="{{item.coverImg}}"></image>
 			</view>
 			<view class="item-content">
 				<text class="item-title">{{item.title}}</text>
 				<text class="item-discrip">{{item.discrip}}</text>
 				<text class="item-destination">想去：{{item.destination}}</text>
-				<text class="item-publish_date">发布日期：{{item.publish_date}}</text>
+				<text class="item-publish_date">发布日期：{{item.postTime}}</text>
 				<view class="item-location-view">
 					<text class="item-price">{{item.price}}/月</text>
 					<text class="item-location">{{item.location}}</text>

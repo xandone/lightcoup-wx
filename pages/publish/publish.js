@@ -1,6 +1,8 @@
 // pages/publish/publish.js
 
 const app = getApp()
+// const URL = 'https://xandone.pub/sharerent';
+const URL = 'http://localhost/sharerent';
 
 Page({
 
@@ -115,44 +117,29 @@ Page({
         })
     },
 
-    uploadImg: function () {
-        this.data.qiniufiles = [];
-        if (this.data.files == null || this.data.files.length == 0) {
-            app.util.showTipToast("请选择图片");
-            return;
-        }
-        for (let i = 0; i < this.data.files.length; i++) {
-            this.upload(this.data.files[0]);
-        }
-    },
-
-    upload: function (imageTemp) {
-        let that = this;
-        wx.uploadFile({
-            url: 'http://up-z2.qiniup.com',
-            filePath: imageTemp,
-            name: 'file',
-            formData: {
-                'useriD': 1212,
-                'token': app.globalData.qiniutoken,
-                'key':String(new Date().getTime())//文件名
-            },
-            success(res) {
-                const datakey = JSON.parse(res.data).key;
-                const url = "http://www.xandone.pub/" + datakey;
-                that.data.qiniufiles.push(url);
-                console.log(res.data);
-            }
+    commit: function (params) {
+        const that = this;
+        new Promise((resolve, reject) => {
+            wx.request({
+                url: URL + '/room/add',
+                method: "POST",
+                data: params,
+                success: resolve,
+                fail: reject
+            });
         })
     },
+    /**
+     * 上传图片并提交
+     * @param {*} e 
+     */
+    submitForm: function (e) {
+        const title = this.data.title
+        const descrip = this.data.descrip
+        const that = this;
+        const isTitleEmpty = app.util.isEmpty(title);
+        const isDescripEmpty = app.util.isEmpty(descrip);
 
-    commit: function (e) {
-        this.uploadImg();
-        if (true) {
-            return;
-        }
-        let isTitleEmpty = app.util.isEmpty(this.data.title);
-        let isDescripEmpty = app.util.isEmpty(this.data.descrip);
         if (isTitleEmpty) {
             app.util.showTipToast("请填写标题");
             return;
@@ -161,8 +148,61 @@ Page({
             app.util.showTipToast("请填写详情");
             return;
         }
+        if (this.data.files == null || this.data.files.length == 0) {
+            app.util.showTipToast("请选择图片");
+            return;
+        }
         if (this.data.value.length == 0) {
             app.util.showTipToast("请勾选并同意相关条例");
+            return;
+        }
+
+        if (title && descrip) {
+            wx.showLoading({
+                title: '提交中...',
+                mask: true
+            })
+
+            // 将选择的图片组成一个Promise数组，准备进行并行上传
+            const arr = this.data.files.map(path => {
+                return new Promise((resolve, reject) => {
+                    wx.uploadFile({
+                        url: 'https://up-z2.qiniup.com',
+                        filePath: path,
+                        name: 'file',
+                        formData: {
+                            'userId': 1212,
+                            'token': app.globalData.qiniutoken,
+                            'key': String(new Date().getTime()) //文件名
+                        },
+                        success: resolve,
+                        fail: reject
+                    })
+                })
+            })
+
+            // 开始并行上传图片
+            Promise.all(arr).then(res => {
+                // 上传成功，获取这些图片在服务器上的地址，组成一个数组
+                return res.map(item => "http://www.xandone.pub/" + JSON.parse(item.data).key)
+            }).catch(err => {
+                console.log(">>>> upload images error:", err)
+            }).then(urls => {
+                console.log(urls);
+                // 调用保存问题的后端接口
+                return that.commit({
+                    userId: 123,
+                    title: title,
+                    descrip: descrip,
+                    images: JSON.stringify(urls)
+                })
+            }).then(res => {
+                wx.hideLoading()
+            }).catch(err => {
+                console.log(">>>error:", err)
+            }).then(() => {
+                wx.hideLoading()
+            })
         }
     }
 })

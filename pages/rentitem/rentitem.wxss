@@ -45,7 +45,7 @@
 
 .item-publish_date {
   color: #999;
-  font-size: 24rpx;
+  font-size: 22rpx;
 }
 
 .item-destination {

@@ -44,7 +44,7 @@
        </checkbox-group>
     </label>
      <view>
-           <button class="weui-btn" style="margin-top:50rpx" type="primary" bindtap="commit">确定</button>
+           <button class="weui-btn" style="margin-top:50rpx" type="primary" bindtap="submitForm">确定</button>
      </view>
 
     <view class="fadeIn" wx:if="{{iosDialog2}}">
