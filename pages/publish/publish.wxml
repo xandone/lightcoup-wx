@@ -4,16 +4,45 @@
 	<view class="weui-cells weui-cells_after-title">
 		<view class="weui-cell weui-cell_active">
 			<view class="weui-cell__bd">
-				<input class="weui-input" placeholder="请输入标题" model:value="{{title}}" />
+				<input class="weui-input" placeholder="请输入标题" maxlength="30" model:value="{{title}}" />
 			</view>
 		</view>
 	</view>
 
-	<view class="weui-cells__title">描述详情</view>
+	<view class="weui-cells__title">月租价格</view>
+  	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_active">
+			<view class="weui-cell__bd ren_price_view">
+				<input class="weui-input" placeholder="请输入每月价格" maxlength="8" type="number"
+         style="width:270rpx" model:value="{{price}}" />
+			  <text style="color:#ffd04b">/月</text>
+      </view>
+		</view>
+	</view>
+
+  <view class="weui-cells__title">所在地</view>
 	<view class="weui-cells weui-cells_after-title">
 		<view class="weui-cell weui-cell_active">
 			<view class="weui-cell__bd">
-				<textarea class="weui-textarea" placeholder="请输入详细内容" style="height: 5em" model:value="{{descrip}}" />
+				<input class="weui-input" placeholder="请输入所在的地区,比如:汉口区" maxlength="30" model:value="{{location}}" />
+			</view>
+		</view>
+	</view>
+
+  <view class="weui-cells__title">目的地</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_active">
+			<view class="weui-cell__bd">
+				<input class="weui-input" placeholder="请输入想去的地区,比如:武昌区" maxlength="30" model:value="{{destination}}" />
+			</view>
+		</view>
+	</view>
+
+  <view class="weui-cells__title">描述详情</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_active">
+			<view class="weui-cell__bd">
+				<textarea class="weui-textarea" placeholder="请输入详细内容" style="height: 5em" maxlength="500" model:value="{{descrip}}" />
 				<view class="weui-textarea-counter">{{descrip.length}}/500</view>
       </view>
     </view>
@@ -44,7 +73,7 @@
        </checkbox-group>
     </label>
      <view>
-           <button class="weui-btn" style="margin-top:50rpx" type="primary" bindtap="submitForm">确定</button>
+           <button class="weui-btn" style="margin-top:50rpx;margin-bottom:50rpx" type="primary" bindtap="submitForm">确定</button>
      </view>
 
     <view class="fadeIn" wx:if="{{iosDialog2}}">

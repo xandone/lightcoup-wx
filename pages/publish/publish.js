@@ -15,6 +15,9 @@ Page({
         iosDialog2: false,
         title: "",
         descrip: "",
+        price:"",
+        location:"",
+        destination:"",
         value: []
     },
 
@@ -136,12 +139,31 @@ Page({
     submitForm: function (e) {
         const title = this.data.title
         const descrip = this.data.descrip
+        const price = this.data.price
+        const location = this.data.location
+        const destination = this.data.destination
         const that = this;
         const isTitleEmpty = app.util.isEmpty(title);
         const isDescripEmpty = app.util.isEmpty(descrip);
+        const isPriceEmpty = app.util.isEmpty(price);
+        const isLocationEmpty = app.util.isEmpty(location);
+        const isDestinationEmpty = app.util.isEmpty(destination);
 
         if (isTitleEmpty) {
             app.util.showTipToast("请填写标题");
+            return;
+        }
+    
+        if (isPriceEmpty) {
+            app.util.showTipToast("请填写价格");
+            return;
+        }
+        if (isLocationEmpty) {
+            app.util.showTipToast("请填写所在地");
+            return;
+        }
+        if (isDestinationEmpty) {
+            app.util.showTipToast("请填写目的地");
             return;
         }
         if (isDescripEmpty) {
@@ -149,7 +171,7 @@ Page({
             return;
         }
         if (this.data.files == null || this.data.files.length == 0) {
-            app.util.showTipToast("请选择图片");
+            app.util.showTipToast("请上传至少1张图片");
             return;
         }
         if (this.data.value.length == 0) {
@@ -194,10 +216,15 @@ Page({
                     userId: 123,
                     title: title,
                     descrip: descrip,
+                    price:price,
+                    location:location,
+                    destination:destination,
                     images: JSON.stringify(urls)
                 })
             }).then(res => {
-                wx.hideLoading()
+                wx.hideLoading();
+                app.util.showTipToast("提交成功");
+                wx.navigateBack();
             }).catch(err => {
                 console.log(">>>error:", err)
             }).then(() => {
