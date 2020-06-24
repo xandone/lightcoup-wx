@@ -1,0 +1,3 @@
+/* pages/myroom/myroom.wxss */
+
+@import "../rentitem/rentitem.wxss"

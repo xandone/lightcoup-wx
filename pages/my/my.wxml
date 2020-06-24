@@ -16,13 +16,13 @@
 			</block>
 		</view>
 		<view class="user-data-panel">
-			<view class="my-publish">
+			<view class="my-publish" bindtap="go2MyRoom">
 				<text>已发布</text>
-				<text>0</text>
+				<text>{{pubCount}}</text>
 			</view>
-			<view class="my-collect">
+			<view class="my-collect" bindtap="go2MyCollect">
 				<text>已收藏</text>
-				<text>0</text>
+				<text>{{collectCount}}</text>
 			</view>
 		</view>
 

@@ -32,7 +32,29 @@ function getRoomDetails(id) {
     .then(rep => rep.data.data[0])
 }
 
+function getMyRoomList() {
+  const params = {
+    page: 1,
+    row: 10,
+    openId: "1223"
+  }
+  return getDatas('/room/myRoomlist', params)
+    .then(rep => rep.data.data)
+}
+
+function getMyCollectList() {
+  const params = {
+    page: 1,
+    row: 10,
+    openId: "1223"
+  }
+  return getDatas('/room/myCollectlist', params)
+    .then(rep => rep.data.data)
+}
+
 module.exports = {
   getRoomList,
-  getRoomDetails
+  getRoomDetails,
+  getMyRoomList,
+  getMyCollectList
 }

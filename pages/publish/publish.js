@@ -15,9 +15,9 @@ Page({
         iosDialog2: false,
         title: "",
         descrip: "",
-        price:"",
-        location:"",
-        destination:"",
+        price: "",
+        location: "",
+        destination: "",
         value: []
     },
 
@@ -153,7 +153,7 @@ Page({
             app.util.showTipToast("请填写标题");
             return;
         }
-    
+
         if (isPriceEmpty) {
             app.util.showTipToast("请填写价格");
             return;
@@ -216,19 +216,25 @@ Page({
                     userId: 123,
                     title: title,
                     descrip: descrip,
-                    price:price,
-                    location:location,
-                    destination:destination,
+                    price: price,
+                    location: location,
+                    destination: destination,
                     images: JSON.stringify(urls)
                 })
             }).then(res => {
                 wx.hideLoading();
                 app.util.showTipToast("提交成功");
-                wx.navigateBack();
+
+                const pages = getCurrentPages();
+                const prePage = pages[pages.length - 2];
+                prePage.setData({
+                    pubCount: prePage.data.pubCount + 1
+                })
             }).catch(err => {
                 console.log(">>>error:", err)
             }).then(() => {
-                wx.hideLoading()
+                wx.hideLoading();
+                wx.navigateBack();
             })
         }
     }

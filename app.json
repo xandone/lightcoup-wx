@@ -3,7 +3,8 @@
     "pages/main/main",
     "pages/my/my",
     "pages/rentdetails/rentdetails",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/myroom/myroom"
   ],
   "window": {
     "backgroundTextStyle": "light",

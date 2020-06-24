@@ -1,0 +1,5 @@
+<!--pages/myroom/myroom.wxml-->
+<import src="../rentitem/rentitem.wxml" />
+<view>
+	<template is="rent-item" data="{{item}}" wx:for="{{rentList}}" wx:key="{{item.id}}"></template>
+</view>

@@ -10,7 +10,9 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    pubCount:0,//已发布
+    collectCount:0//已收藏
   },
 
   /**
@@ -106,6 +108,27 @@ Page({
       hasUserInfo: true
     })
   },
+
+  go2MyRoom: function (e) {
+    if (!this.data.hasUserInfo) {
+      app.util.showTipToast("请先登录");
+      return;
+    }
+    wx.navigateTo({
+      url: '../myroom/myroom?type=1',
+    })
+  },
+
+  go2MyCollect: function (e) {
+    if (!this.data.hasUserInfo) {
+      app.util.showTipToast("请先登录");
+      return;
+    }
+    wx.navigateTo({
+      url: '../myroom/myroom?type=2',
+    })
+  },
+  
   go2publish: function (e) {
     if (!this.data.hasUserInfo) {
       app.util.showTipToast("请先登录");
