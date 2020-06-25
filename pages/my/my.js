@@ -11,8 +11,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    pubCount:0,//已发布
-    collectCount:0//已收藏
+    rentUserBean: {},
+    pubCount: 0, //已发布
+    collectCount: 0 //已收藏
   },
 
   /**
@@ -99,6 +100,20 @@ Page({
         }
       })
     }
+
+    if (app.globalData.rentUserBean) {
+      this.setData({
+        rentUserBean: app.globalData.rentUserBean
+      })
+    } else {
+      app.rent.getUserInfo()
+        .then(res => {
+          this.globalData.rentUserBean = res[0];
+          this.setData({
+            rentUserBean: app.globalData.rentUserBean
+          })
+        })
+    }
   },
 
   getUserInfo: function (e) {
@@ -128,7 +143,7 @@ Page({
       url: '../myroom/myroom?type=2',
     })
   },
-  
+
   go2publish: function (e) {
     if (!this.data.hasUserInfo) {
       app.util.showTipToast("请先登录");
@@ -143,8 +158,6 @@ Page({
       app.util.showTipToast("请先登录");
       return;
     }
-    wx.navigateTo({
-      url: '../publish/publish',
-    })
+    app.util.showTipToast("开发中..");
   }
 })

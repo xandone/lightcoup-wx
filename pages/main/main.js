@@ -1,5 +1,5 @@
 // pages/main/main.js
-const app=getApp();
+const app = getApp();
 
 Page({
 
@@ -8,7 +8,10 @@ Page({
    */
   data: {
     rentList: [],
-    banner: []
+    banner: [],
+    page: 1,
+    size: 10,
+    hasMore: true,
 
   },
 
@@ -17,11 +20,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      banner: ['http://www.xandone.pub/1576561266509', 'http://www.xandone.pub/1576557100935',
-        'http://www.xandone.pub/1587056505085'
-      ]
-    }),
-    this.getRoomList()
+        banner: ['http://www.xandone.pub/1576561266509', 'http://www.xandone.pub/1576557100935',
+          'http://www.xandone.pub/1587056505085'
+        ]
+      }),
+      this.getRoomList()
   },
 
   /**
@@ -63,7 +66,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getRoomListMore();
   },
 
   /**
@@ -73,20 +76,51 @@ Page({
 
   },
 
-
   getRoomList() {
     wx.showLoading({
       title: '加载中...',
     })
-    this.data.rentList=[];
-    return app.rent.getRoomList()
-      .then(rep =>
+    return app.rent.getRoomList(this.data.page, this.data.size)
+      .then(rep => {
+        this.data.rentList = [];
         this.setData({
-          rentList: this.data.rentList.concat(rep)
-        }),
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length==rep.total
+        });
         wx.hideLoading()
-      ).catch(e => {
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
         wx.hideLoading()
       })
   },
+
+  getRoomListMore() {
+    if (!this.data.hasMore) {
+      return;
+    }
+    wx.showLoading({
+      title: '加载中...',
+    })
+    return app.rent.getRoomList(this.data.page++, this.data.size)
+      .then(rep => {
+        this.setData({
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length == rep.total
+        });
+        wx.hideLoading()
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
+        wx.hideLoading()
+        this.data.page--;
+      })
+  },
+
+  go2details: function (e) {
+    const item = JSON.stringify(e.currentTarget.dataset.item);
+    wx.navigateTo({
+      url: "../rentdetails/rentdetails?item=" + item
+    })
+  }
 })

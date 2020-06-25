@@ -1,5 +1,5 @@
 <template name="rent-item">
-	<navigator url="../rentdetails/rentdetails?id={{item.id}}">
+	<view bindtap="go2details" data-item="{{item}}">
 		<view class="item-root">
 			<view>
 				<image class="item-cover" src="{{item.coverImg}}"></image>
@@ -15,6 +15,6 @@
 				</view>
 			</view>
 		</view>
-	</navigator>
+	</view>
 
 </template>

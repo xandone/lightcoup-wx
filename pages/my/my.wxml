@@ -18,11 +18,11 @@
 		<view class="user-data-panel">
 			<view class="my-publish" bindtap="go2MyRoom">
 				<text>已发布</text>
-				<text>{{pubCount}}</text>
+				<text>{{rentUserBean.pubCount}}</text>
 			</view>
 			<view class="my-collect" bindtap="go2MyCollect">
 				<text>已收藏</text>
-				<text>{{collectCount}}</text>
+				<text>{{rentUserBean.collectCount}}</text>
 			</view>
 		</view>
 

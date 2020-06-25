@@ -4,12 +4,12 @@
 		<text >{{rentInfo.title}}</text>
 	</view>
 	<view class="date">
-		<text>{{rentInfo.publish_data}}</text>
+		<text>{{rentInfo.postTime}}</text>
 	</view>
 	<view class="discrip">
 		<text>{{rentInfo.discrip}}</text>
-		<view wx:for="{{rentInfo.room_images}}">
-    <image src="{{item}}" class="rent-pic"></image>
-		</view >
+		<view wx:for="{{rentInfo.imgArr}}">
+			<image src="{{item}}" class="rent-pic"></image>
+		</view>
 	</view>
 </view>
