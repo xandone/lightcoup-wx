@@ -11,7 +11,10 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    rentUserBean: {},
+    rentUserBean: {
+      'pubCount': 0,
+      'collectCount': 0
+    },
     pubCount: 0, //已发布
     collectCount: 0 //已收藏
   },
@@ -101,14 +104,16 @@ Page({
       })
     }
 
+    console.log(app.globalData.rentUserBean);
     if (app.globalData.rentUserBean) {
       this.setData({
         rentUserBean: app.globalData.rentUserBean
       })
-    } else {
-      app.rent.getUserInfo()
+    } else if (app.globalData.userInfo) {
+      app.rent.getUserByJsCode(app.globalData.jsCode, app.globalData.userInfo.nickName,
+          app.globalData.userInfo.avatarUrl)
         .then(res => {
-          this.globalData.rentUserBean = res[0];
+          app.globalData.rentUserBean = res[0];
           this.setData({
             rentUserBean: app.globalData.rentUserBean
           })

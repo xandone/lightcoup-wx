@@ -23,9 +23,10 @@ Page({
         rentUserBean: app.globalData.rentUserBean
       })
     } else {
-      app.rent.getUserInfo()
+      app.rent.getUserByJsCode(app.globalData.jsCode, app.globalData.userInfo.nickName,
+          app.globalData.userInfo.avatarUrl)
         .then(res => {
-          this.globalData.rentUserBean = res[0];
+          app.globalData.rentUserBean = res[0];
           this.setData({
             rentUserBean: app.globalData.rentUserBean
           })

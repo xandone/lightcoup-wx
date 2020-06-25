@@ -32,7 +32,7 @@ function getRoomDetails(id) {
     .then(rep => rep.data.data[0])
 }
 
-function getMyRoomList(page, row,openId) {
+function getMyRoomList(page, row, openId) {
   const params = {
     page: page,
     row: row,
@@ -42,7 +42,7 @@ function getMyRoomList(page, row,openId) {
     .then(rep => rep.data)
 }
 
-function getMyCollectList(page, row,openId) {
+function getMyCollectList(page, row, openId) {
   const params = {
     page: page,
     row: row,
@@ -52,9 +52,19 @@ function getMyCollectList(page, row,openId) {
     .then(rep => rep.data)
 }
 
-function getUserInfo() {
+function getUserByJsCode(jsCode, nickname, userIcon) {
   const params = {
-    openId: "1223"
+    jsCode: jsCode,
+    nickname: nickname,
+    userIcon: userIcon
+  }
+  return getDatas('/user/jscode/userInfo', params)
+    .then(rep => rep.data.data)
+}
+
+function getUserById(openId) {
+  const params = {
+    openId: openId
   }
   return getDatas('/user/userInfo', params)
     .then(rep => rep.data.data)
@@ -65,5 +75,6 @@ module.exports = {
   getRoomDetails,
   getMyRoomList,
   getMyCollectList,
-  getUserInfo
+  getUserByJsCode,
+  getUserById
 }

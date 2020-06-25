@@ -18,20 +18,25 @@
 		<text class="default-label">目的地</text>
 	</view>
 	<text class="default-tv">{{rentInfo.destination}}</text>
+
+	<view class="dividle-line"></view>
+
 	<view class="label-root">
 		<image class="default-label-ic" src="/assets/destination_co.png" />
 		<text class="default-label">月租</text>
 	</view>
 	<text class="default-tv">{{rentInfo.price}}/月</text>
+
+	<view class="dividle-line"></view>
+
 	<view class="label-root">
 		<image class="default-label-ic" src="/assets/destination_co.png" />
 		<text class="default-label">发布日期</text>
 	</view>
 	<text class="default-tv">{{rentInfo.postTime}}</text>
-	<view class="label-root">
-		<image class="default-label-ic" src="/assets/destination_co.png" />
-		<text class="default-label">用户信息</text>
-	</view>
+
+	<view class="dividle-line"></view>
+
 	<view class="label-root">
 		<image class="default-label-ic" src="/assets/destination_co.png" />
 		<text class="default-label">详情</text>
@@ -41,5 +46,16 @@
 		<view wx:for="{{rentInfo.imgArr}}">
 			<image src="{{item}}" class="rent-pic"></image>
 		</view>
+	</view>
+	
+	<view class="dividle-line"></view>
+
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">用户信息</text>
+	</view>
+	<view class="userIcon-root">
+		<image class="userIcon" src="{{userInfo.userIcon}}" />
+		<text class="default-tv">{{userInfo.nickname}}</text>
 	</view>
 </view>

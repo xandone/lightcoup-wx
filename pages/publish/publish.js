@@ -97,7 +97,6 @@ Page({
     },
     deleteImage: function (e) {
         this.data.files.splice(e.currentTarget.id, 1);
-        console.log(this.data.files);
         this.setData({
             files: this.data.files
         })

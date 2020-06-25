@@ -1,11 +1,13 @@
 // pages/rentdetails/rentdetails.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    rentInfo: {}
+    rentInfo: {},
+    userInfo: {}
   },
 
   /**
@@ -18,6 +20,7 @@ Page({
     this.setData({
       rentInfo: bean
     });
+    this.getUserById(bean.userOpenid);
   },
 
   /**
@@ -68,5 +71,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  loadRentInfo() {}
+  loadRentInfo() {},
+  getUserById(userOpenid) {
+    app.rent.getUserById(userOpenid)
+      .then(res => {
+        console.log(res[0]);
+        this.setData({
+          userInfo: res[0]
+        })
+      })
+  }
 })
