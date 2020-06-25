@@ -6,14 +6,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    rentUserBean: {},
     type: 1,
-    rentList: []
+    rentList: [],
+    page: 1,
+    size: 10,
+    hasMore: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.rentUserBean) {
+      this.setData({
+        rentUserBean: app.globalData.rentUserBean
+      })
+    } else {
+      app.rent.getUserInfo()
+        .then(res => {
+          this.globalData.rentUserBean = res[0];
+          this.setData({
+            rentUserBean: app.globalData.rentUserBean
+          })
+        })
+    }
+
     this.data.type = options.type;
     const type = options.type;
     if (type == 1) {
@@ -55,14 +73,30 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    const type = this.data.type;
+    if (type == 1) {
+      wx.setNavigationBarTitle({
+        title: '我的发布'
+      })
+      this.getMyRoomList()
+    } else if (type == 2) {
+      wx.setNavigationBarTitle({
+        title: '我的收藏'
+      })
+      this.getMyCollectList()
+    }
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    const type = this.data.type;
+    if (type == 1) {
+      this.getMyRoomListMore()
+    } else if (type == 2) {
+      this.getMyCollectListMore()
+    }
   },
 
   /**
@@ -71,19 +105,47 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   getMyRoomList() {
     wx.showLoading({
       title: '加载中...',
     })
-    this.data.rentList = [];
-    return app.rent.getMyRoomList()
-      .then(rep =>
+    return app.rent.getMyRoomList(this.data.page, this.data.size,
+        this.data.rentUserBean.userOpenid)
+      .then(rep => {
+        this.data.rentList = [];
         this.setData({
-          rentList: this.data.rentList.concat(rep)
-        }),
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length == rep.total
+        });
         wx.hideLoading()
-      ).catch(e => {
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
         wx.hideLoading()
+      })
+  },
+
+  getMyRoomListMore() {
+    if (!this.data.hasMore) {
+      return;
+    }
+    wx.showLoading({
+      title: '加载中...',
+    })
+    return app.rent.getMyRoomList(this.data.page++, this.data.size,
+        this.data.rentUserBean.userOpenid)
+      .then(rep => {
+        this.setData({
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length == rep.total
+        });
+        wx.hideLoading()
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
+        wx.hideLoading()
+        this.data.page--;
       })
   },
 
@@ -91,15 +153,42 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    this.data.rentList = [];
-    return app.rent.getMyCollectList()
-      .then(rep =>
+    return app.rent.getMyCollectList(this.data.page, this.data.size,
+        this.data.rentUserBean.userOpenid)
+      .then(rep => {
+        this.data.rentList = [];
         this.setData({
-          rentList: this.data.rentList.concat(rep)
-        }),
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length == rep.total
+        });
         wx.hideLoading()
-      ).catch(e => {
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
         wx.hideLoading()
+      })
+  },
+
+  getMyCollectListMore() {
+    if (!this.data.hasMore) {
+      return;
+    }
+    wx.showLoading({
+      title: '加载中...',
+    })
+    return app.rent.getMyCollectList(this.data.page++, this.data.size,
+        this.data.rentUserBean.userOpenid)
+      .then(rep => {
+        this.setData({
+          rentList: this.data.rentList.concat(rep.data),
+          hasMore: this.data.rentList.length == rep.total
+        });
+        wx.hideLoading()
+      }).then(() => {
+        wx.stopPullDownRefresh()
+      }).catch(e => {
+        wx.hideLoading()
+        this.data.page--;
       })
   },
 })

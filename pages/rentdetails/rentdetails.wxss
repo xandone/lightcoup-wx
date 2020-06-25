@@ -20,11 +20,35 @@
   margin-right: 15rpx;
 }
 
-.discrip {
-  color: #333;
-  font-size: 36rpx;
+.rent-pic {
+  width: 100%;
 }
 
-.rent-pic{
+.default-tv {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.default-tv-height {}
+
+.dividle-line {
+  background-color: #ddd;
+  height: 1rpx;
   width: 100%;
+}
+
+.label-root {
+  display: flex;
+  align-items: center;
+}
+
+.default-label {
+  color: #999;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+.default-label-ic {
+  width: 32rpx;
+  height: 32rpx;
 }

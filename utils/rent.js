@@ -32,24 +32,24 @@ function getRoomDetails(id) {
     .then(rep => rep.data.data[0])
 }
 
-function getMyRoomList() {
+function getMyRoomList(page, row,openId) {
   const params = {
-    page: 1,
-    row: 10,
-    openId: "1223"
+    page: page,
+    row: row,
+    openId: openId
   }
   return getDatas('/room/myRoomlist', params)
-    .then(rep => rep.data.data)
+    .then(rep => rep.data)
 }
 
-function getMyCollectList() {
+function getMyCollectList(page, row,openId) {
   const params = {
-    page: 1,
-    row: 10,
-    openId: "1223"
+    page: page,
+    row: row,
+    openId: openId
   }
   return getDatas('/room/myCollectlist', params)
-    .then(rep => rep.data.data)
+    .then(rep => rep.data)
 }
 
 function getUserInfo() {

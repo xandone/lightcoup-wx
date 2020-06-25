@@ -3,11 +3,41 @@
 	<view class="title">
 		<text >{{rentInfo.title}}</text>
 	</view>
-	<view class="date">
-		<text>{{rentInfo.postTime}}</text>
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/location_ic.png" />
+		<text class="default-label">所在地</text>
 	</view>
-	<view class="discrip">
-		<text>{{rentInfo.discrip}}</text>
+	<view class="default-tv-height">
+		<text class="default-tv">{{rentInfo.location}}</text>
+	</view>
+
+	<view class="dividle-line"></view>
+
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">目的地</text>
+	</view>
+	<text class="default-tv">{{rentInfo.destination}}</text>
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">月租</text>
+	</view>
+	<text class="default-tv">{{rentInfo.price}}/月</text>
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">发布日期</text>
+	</view>
+	<text class="default-tv">{{rentInfo.postTime}}</text>
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">用户信息</text>
+	</view>
+	<view class="label-root">
+		<image class="default-label-ic" src="/assets/destination_co.png" />
+		<text class="default-label">详情</text>
+	</view>
+	<view>
+		<text class="default-tv">{{rentInfo.discrip}}</text>
 		<view wx:for="{{rentInfo.imgArr}}">
 			<image src="{{item}}" class="rent-pic"></image>
 		</view>
