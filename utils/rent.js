@@ -1,5 +1,5 @@
-// const URL = 'https://xandone.pub/sharerent';
-const URL = 'http://localhost/sharerent';
+const URL = 'https://xandone.pub/sharerent';
+// const URL = 'http://localhost/sharerent';
 
 function getDatas(path, params) {
   return new Promise((resolve, reject) => {

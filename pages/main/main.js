@@ -20,8 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-        banner: ['http://www.xandone.pub/1576561266509', 'http://www.xandone.pub/1576557100935',
-          'http://www.xandone.pub/1587056505085'
+        banner: ['http://www.xandone.pub/1576561266509'
         ]
       }),
       this.getRoomList()

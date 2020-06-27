@@ -1,8 +1,8 @@
 // pages/publish/publish.js
 
 const app = getApp()
-// const URL = 'https://xandone.pub/sharerent';
-const URL = 'http://localhost/sharerent';
+const URL = 'https://xandone.pub/sharerent';
+// const URL = 'http://localhost/sharerent';
 
 Page({
 
@@ -212,7 +212,7 @@ Page({
                 console.log(urls);
                 // 调用保存问题的后端接口
                 return that.commit({
-                    userId: 123,
+                    userOpenid: app.globalData.rentUserBean.userOpenid,
                     title: title,
                     descrip: descrip,
                     price: price,
@@ -222,12 +222,16 @@ Page({
                 })
             }).then(res => {
                 wx.hideLoading();
-                app.util.showTipToast("提交成功");
 
+                app.util.showTipToast("提交成功");
                 const pages = getCurrentPages();
                 const prePage = pages[pages.length - 2];
+                const count = prePage.data.rentUserBean.pubCount + 1;
                 prePage.setData({
-                    pubCount: prePage.data.pubCount + 1
+                    rentUserBean: {
+                        pubCount: count,
+                        collectCount: prePage.data.rentUserBean.collectCount
+                    }
                 })
             }).catch(err => {
                 console.log(">>>error:", err)

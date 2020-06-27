@@ -79,7 +79,7 @@
     <view class="fadeIn" wx:if="{{iosDialog2}}">
         <view class="weui-mask"></view>
         <view class="weui-dialog">
-            <view class="weui-dialog__bd">相关条款相关条款相关条款相关条款相关条款</view>
+            <view class="weui-dialog__bd">本平台仅提供‘共享租房’甲乙双方沟通的渠道，不承担租房过程中的纠纷问题</view>
             <view class="weui-dialog__ft">
                 <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="close">知道了</a>
             </view>

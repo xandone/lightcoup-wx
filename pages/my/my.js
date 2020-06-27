@@ -12,11 +12,9 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     rentUserBean: {
-      'pubCount': 0,
-      'collectCount': 0
+      pubCount: 0, //已发布
+      collectCount: 0 //已收藏
     },
-    pubCount: 0, //已发布
-    collectCount: 0 //已收藏
   },
 
   /**
@@ -104,12 +102,12 @@ Page({
       })
     }
 
-    console.log(app.globalData.rentUserBean);
     if (app.globalData.rentUserBean) {
       this.setData({
         rentUserBean: app.globalData.rentUserBean
       })
     } else if (app.globalData.userInfo) {
+      app.globalData.jsCode = res.code;
       app.rent.getUserByJsCode(app.globalData.jsCode, app.globalData.userInfo.nickName,
           app.globalData.userInfo.avatarUrl)
         .then(res => {
@@ -126,6 +124,19 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    });
+
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        app.globalData.jsCode = res.code;
+        app.rent.getUserByJsCode(res.code, app.globalData.userInfo.nickName,
+            app.globalData.userInfo.avatarUrl)
+          .then(res => {
+            app.globalData.rentUserBean = res[0];
+            console.log("获取id成功=" + app.globalData.rentUserBean.userOpenid);
+          })
+      }
     })
   },
 
@@ -140,6 +151,10 @@ Page({
   },
 
   go2MyCollect: function (e) {
+    if (true) {
+      app.util.showTipToast("开发中..");
+      return;
+    }
     if (!this.data.hasUserInfo) {
       app.util.showTipToast("请先登录");
       return;
